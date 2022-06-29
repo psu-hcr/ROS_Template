@@ -1,7 +1,6 @@
 # ROS_Template
 A template and instructions for starting your own ROS package
 
-========
 
 Requirements
 -----------
@@ -19,23 +18,36 @@ Dependencies
 ### Use this repo to start a package
 
 1. **Clone this repository to your workspace**:
-	`cd chosenname_ws`
-	```git clone https://github.com/psu-hcr/ROS_Template.git src/nameofyourpackage```
-2. **Stop tracking this repo** (You probably want to track this as your own repo, so let's remove the git stuff): ```cd src/nameofyourpackage 
-           rm -rf .git
-		   ```
+	```sh
+	cd chosenname_ws
+	git clone https://github.com/psu-hcr/ROS_Template.git src/nameofyourpackage```
+2. **Stop tracking this repo** (You probably want to track this as your own repo, so let's remove the git stuff): 
+```sh
+cd src/nameofyourpackage
+rm -rf .git
+```
+
 3. **Start tracking it as a new repo**: `git init`
 4. **Optional**, but strongly recommended: Setup your own repo on Github.
-```git remote add origin https://github.com/psu-hcr/nameofyourpackage.git
+
+```sh
+git remote add origin https://github.com/psu-hcr/nameofyourpackage.git
 git branch -M main
 git push -u origin main
 ```
-5. **Source your catkin workspace at the begining of every terminal session**. This is done by navigating to the top level of the workspace ```cd ~/chosenname_ws```. Ensure that all your most recent changes have been incorporate by running ```catkin_make``` and running this command ```source devel/setup.bash```
+5. **Source your catkin workspace at the begining of every terminal session**. This is done by navigating to the top level of the workspace 
+```cd ~/chosenname_ws```. 
+Ensure that all your most recent changes have been incorporate by running 
+```catkin_make``` 
+and running this command 
+```source devel/setup.bash```
+
 -------------
 ### Required Files for your ROS package
 #### CMakeLists.txt
 - The most basic version of this just has a few lines
-```cmake_minimum_required(VERSION 2.8.3)
+```sh
+cmake_minimum_required(VERSION 2.8.3)
 project(nameofyourpackage)
 find_package(catkin REQUIRED)
 
@@ -48,7 +60,7 @@ find_package(catkin REQUIRED)
 - This file mostly contains information about who wrote the package and what it is intended for.
 - You can and should also include dependencies here. This helps catkin identify any packages that are not installed.
 -------------
-### Almost Required File Structure
+### ALMOST Required File Structure
 #### src Folder
 - There should be an src folder in your package. This is where your python scripts or cpp code that runs each node should be store.
 - We have included example1.cpp in this template because git tracks files but not folders. We had to put something in there to track the structure.
@@ -57,7 +69,10 @@ find_package(catkin REQUIRED)
 - Theoretically you could individually call each node that you want to run by opening multiple terminals, but in reality you want to use a launch file, so we have a folder called launch where you can store multiple launch files.
 - The various launch files your write can be to startup nodes or your can use a single launch file with multiple arguments. In our example launch file, there are two possible arguments each of which have a default assigned. 
 - To use the launch file, you use roslaunch in the terminal and specify the value of the arguments using **:=**
-``` roslaunch nameofyourpackage nameofyourlaunchfile.launch vis:=true```
+```sh
+roslaunch nameofyourpackage nameofyourlaunchfile.launch vis:=true
+```
+
 -------------
 ### Optional, but helpful 
 #### Custom ROS message types
