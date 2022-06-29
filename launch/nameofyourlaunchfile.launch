@@ -1,0 +1,32 @@
+<launch>
+  <!-- ARGUMENT DEFINITIONS -->
+  <arg name="vis" default="false" /> <!-- run rviz? -->
+  <arg name="replay" default="false" /> <!-- replay bag file? -->
+
+  <group unless="$(arg replay)"> 
+    <!-- startup simulator node -->
+    <node pkkg="yourpackagename" type="nameofpythonscriptorcppexecutble" name="simulator"
+	  respawn="true" output="screen" />
+    <!-- startup node from another rospackage -->
+    <include file="$(find nameofotherrospackage)/launch/nameofotherlaunchfile.launch" />
+  </group>
+   
+  <!-- startup simulator node -->
+  <group if="$(arg replay)">
+    <param name="use_sim_time" value="true" />
+    <node pkg="tf" type="static_transform_publisher" name="base_trep_broadcaster"
+	  args="0.0 0 0.0 0 0 0 base trep_world 100" />
+    <node pkg="yourpackagename" type="nameofpythonscriptorcppexecutble" name="simulator"
+	  respawn="true" output="screen" />
+  </group>
+    
+  <!-- rviz if needed -->
+  <group if="$(arg vis)">
+    <node pkg="rviz" type="rviz" respawn="false" name="rviz" 
+	  args="-d $(find yourpackagename)/launch/yourrvizfile.rviz" />
+  </group>
+
+</launch>
+
+
+  
