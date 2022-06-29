@@ -75,6 +75,12 @@ roslaunch nameofyourpackage nameofyourlaunchfile.launch vis:=true
 
 -------------
 ### Optional, but helpful 
+#### An RVIZ file
+- RVIZ is a really common way to add a visualization to your ROS package. You will see that the exmaple launch file launches the rviz node. This should come installed with your ROS distribution unless you opted for a really bare bones install
+- To run rviz, you need a .rviz file that basically saves the camera angles of your 3D visualization. - - To customize your rviz file
+  -- Launch your node with the .rviz file provided in this repo. 
+  -- Adjust the view (much the same way you adjust a view in CAD, then use the Save As function in RVIZ to either generate a new .rviz file or overwrite the existing one with your preferred settings.
+  
 #### Custom ROS message types
 - ROS has a huge library of message types similar to the types found in C++, int, float, arrays, structs, but I have often found it helpful to define a custom message type as a way to collect a single synchronized data point
 - This repo includes an example that collects the time of a simulated system, the coordinates describing the system state and their derivatives (q, dq,ddq). You can see that it is similar to defining a struct in C++.
