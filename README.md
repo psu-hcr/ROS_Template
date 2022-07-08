@@ -95,3 +95,4 @@ roslaunch nameofyourpackage nameofyourlaunchfile.launch vis:=true
 - I've included an example **record.sh**. You can simply change the topics to your desired topics and adjust the naming schemes. 
 - The example file records both a rosbag file of all active rostopics and generates several csv files for specific rostopics of interest.
 	
+[ROS]: http://www.ros.org
