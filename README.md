@@ -31,8 +31,11 @@ rm -rf .git
 4. **Optional**, but strongly recommended: Setup your own repo on Github.
 
 ```sh
-git remote add origin https://github.com/psu-hcr/nameofyourpackage.git
+git init
+git add CMakeLists.txt README.md launch/nameofyourlaunchfile.launch launch/yourrvizfile.rviz msg/custom.msg package.xml record.sh src/example1.cpp LICENSE
+git commit -a -m "first commit"
 git branch -M main
+git remote add origin git@github.com:cd nameofyourpackage.git
 git push -u origin main
 ```
 5. **Source your catkin workspace at the begining of every terminal session**. This is done by navigating to the top level of the workspace 
